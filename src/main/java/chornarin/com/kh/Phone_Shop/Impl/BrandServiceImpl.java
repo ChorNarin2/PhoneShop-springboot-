@@ -1,15 +1,16 @@
 package chornarin.com.kh.Phone_Shop.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
+import chornarin.com.kh.Phone_Shop.Exception.ApiException;
+import chornarin.com.kh.Phone_Shop.Exception.ResourceNotFoundException;
 import chornarin.com.kh.Phone_Shop.Repository.BrandRepository;
 import chornarin.com.kh.Phone_Shop.Service.BrandService;
 import chornarin.com.kh.Phone_Shop.models.Brand;
 
 @Service
 public class BrandServiceImpl implements BrandService {
-
 
     @Autowired
     private BrandRepository brandRepository;
@@ -18,12 +19,18 @@ public class BrandServiceImpl implements BrandService {
     public Brand create(Brand brand) {
         return brandRepository.save(brand);
     }
+
     @Override
-    public Brand read(Brand brand) {
-        Brand Brand = new Brand();
-        Brand.setId(brand.getId());
-        return brandRepository.findById(brand.getId()).orElse(null);
-
-
+    public Brand GetbyId(Integer id) {
+        return brandRepository.findById(id)
+            // .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, String.format("Brand not found for ID: %d", id)));
+            .orElseThrow(() -> new ResourceNotFoundException("Brand", id));
     }
-};
+
+    @Override
+    public Brand Update(Integer id, Brand brand){
+        Brand brand2 = GetbyId(id);
+        brand2.setName(brand.getName()); //TODO improve update
+        return brandRepository.save(brand2);
+    }
+}

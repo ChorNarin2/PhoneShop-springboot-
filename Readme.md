@@ -8,3 +8,9 @@
 - What the fuck
 
 
+
+
+############
+Implicit == default values 
+Explicit == values that are explicitly defined
+############

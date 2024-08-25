@@ -4,7 +4,8 @@ import chornarin.com.kh.Phone_Shop.models.Brand;
 
 public interface BrandService {
     Brand create(Brand brand);
-    Brand read(Brand brand);
+    Brand GetbyId(Integer id);
+    Brand Update(Integer id, Brand brand);
 
     
 } 
