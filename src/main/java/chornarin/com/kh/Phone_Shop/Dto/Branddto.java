@@ -7,6 +7,7 @@ public class Branddto {
 
     private Integer id;
     private String name;
+
 }
 
 

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import chornarin.com.kh.Phone_Shop.Dto.Branddto;
+import chornarin.com.kh.Phone_Shop.Mapper.BrandMapper;
 import chornarin.com.kh.Phone_Shop.Service.BrandService;
-import chornarin.com.kh.Phone_Shop.Util.Mapper;
 import chornarin.com.kh.Phone_Shop.models.Brand;
 
 @RestController
@@ -25,7 +25,7 @@ public class BrandController {
     public  ResponseEntity<?> create(@RequestBody Branddto  branddto) {
 
         try{
-            Brand brand = Mapper.toBrand(branddto);
+            Brand brand = BrandMapper.Instance.toBrand(branddto);
             brand = BrandService.create(brand);
             return ResponseEntity.ok(brand);
 
@@ -38,16 +38,14 @@ public class BrandController {
     @GetMapping("{id}")
     public ResponseEntity<?> getOneBrand(@PathVariable("id") Integer brandId){
         Brand brand = BrandService.GetbyId(brandId);
-        return ResponseEntity.ok(brand);
+        return ResponseEntity.ok(BrandMapper.Instance.toBrandDto(brand));
     }
 
     @PutMapping("{id}")
     public ResponseEntity<?> update(@PathVariable("id") Integer brandId, @RequestBody Branddto branddto){
-        Brand brand = Mapper.toBrand(branddto);
-        Brand brand2 = BrandService.Update(brandId, brand);
-        return ResponseEntity.ok(brand2);
+        Brand brand = BrandMapper.Instance.toBrand(branddto);
+        Brand updateBrand = BrandService.Update(brandId, brand);
+        return ResponseEntity.ok(updateBrand);
     }
-
-
 
 }

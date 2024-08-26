@@ -7,7 +7,7 @@
 - Dto : data transfrom objects(ex: a table that contains id, name, password, email then when we want to return that table only name and email this way we need to use dto )
 - What the fuck
 
-
+- Mapstruct (Transform from DTO TO Entity (DTO-> Entity));
 
 
 ############
