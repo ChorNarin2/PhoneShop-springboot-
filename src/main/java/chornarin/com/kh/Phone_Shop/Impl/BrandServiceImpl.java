@@ -1,9 +1,7 @@
 package chornarin.com.kh.Phone_Shop.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import chornarin.com.kh.Phone_Shop.Exception.ApiException;
 import chornarin.com.kh.Phone_Shop.Exception.ResourceNotFoundException;
 import chornarin.com.kh.Phone_Shop.Repository.BrandRepository;
 import chornarin.com.kh.Phone_Shop.Service.BrandService;
@@ -30,7 +28,7 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public Brand Update(Integer id, Brand brand){
         Brand brand2 = GetbyId(id);
-        brand2.setName(brand.getName()); //TODO improve update
+        brand2.setName(brand.getName()); 
         return brandRepository.save(brand2);
     }
 }
