@@ -1,5 +1,7 @@
 package chornarin.com.kh.Phone_Shop.Impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import chornarin.com.kh.Phone_Shop.Exception.ResourceNotFoundException;
@@ -30,5 +32,15 @@ public class BrandServiceImpl implements BrandService {
         Brand brand2 = GetbyId(id);
         brand2.setName(brand.getName()); 
         return brandRepository.save(brand2);
+    }
+
+    @Override
+    public List<Brand> getsBrands() {
+        return brandRepository.findAll();
+    }
+
+    @Override
+    public List<Brand> getsBrands(String name) {
+        return brandRepository.findByNameLike("%"+name+"%");
     }
 }
