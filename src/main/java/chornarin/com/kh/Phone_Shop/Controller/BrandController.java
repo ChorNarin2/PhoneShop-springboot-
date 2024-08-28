@@ -1,8 +1,10 @@
 package chornarin.com.kh.Phone_Shop.Controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -63,12 +65,13 @@ public class BrandController {
 
     //Searching based on specification name
     @GetMapping("/name")
-    public ResponseEntity<?> getsBrands(@RequestParam("name") String name) {
+    public ResponseEntity<?> getsBrands(@RequestParam Map<String, String> Params) {
+        Page<Brand> brand = brandService.getsBrands(Params);
         
-        List<Branddto> list = brandService.getsBrands(name).stream()
-            .map(branch -> BrandMapper.Instance.toBrandDto(branch))
-            .collect(Collectors.toList());
-
-        return ResponseEntity.ok(list);
+        // List<Branddto> list = brandService.getsBrands(Params).stream()
+        //     .map(branch -> BrandMapper.Instance.toBrandDto(branch))
+        //     .collect(Collectors.toList());
+        return ResponseEntity.ok(brand);
     }
 }
+

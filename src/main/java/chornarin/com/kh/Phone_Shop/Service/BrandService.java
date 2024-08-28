@@ -1,7 +1,9 @@
 package chornarin.com.kh.Phone_Shop.Service;
 
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.data.domain.Page;
 import chornarin.com.kh.Phone_Shop.models.Brand;
 
 public interface BrandService {
@@ -9,11 +11,11 @@ public interface BrandService {
     Brand GetbyId(Integer id);
     Brand Update(Integer id, Brand brand);
     List<Brand> getsBrands();
-    List<Brand> getsBrands(String name);
+    Page<Brand> getsBrands(Map<String, String> Params);
 
 
 
-    
+        
 } 
     
 

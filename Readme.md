@@ -14,3 +14,7 @@
 Implicit == default values 
 Explicit == values that are explicitly defined
 ############
+
+
+- Specification : (JPA relation , criteria, Jpql...)
+- pagination : 
