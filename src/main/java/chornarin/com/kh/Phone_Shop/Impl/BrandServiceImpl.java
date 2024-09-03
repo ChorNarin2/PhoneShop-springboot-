@@ -15,8 +15,10 @@ import chornarin.com.kh.Phone_Shop.Util.PageUtil;
 import chornarin.com.kh.Phone_Shop.models.Brand;
 import chornarin.com.kh.Phone_Shop.spec.BrandFilter;
 import chornarin.com.kh.Phone_Shop.spec.BrandSpec;
+import lombok.AllArgsConstructor;
 
 @Service
+@AllArgsConstructor
 public class BrandServiceImpl implements BrandService {
 
     @Autowired
@@ -77,7 +79,6 @@ public class BrandServiceImpl implements BrandService {
 
         BrandSpec brandSpec = new BrandSpec(brandFilter);
         Pageable pageable = PageUtil.Getpageable(pageLimit, pageNumber);
-
         Page<Brand> page =  brandRepository.findAll(brandSpec, pageable);
 
         return page;

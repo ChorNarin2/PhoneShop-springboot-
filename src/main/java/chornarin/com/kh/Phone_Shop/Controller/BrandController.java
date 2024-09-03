@@ -52,13 +52,12 @@ public class BrandController {
     }
 
     // Get all 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<?> getsBrands() {
 
         List<Branddto> list = brandService.getsBrands().stream()
             .map(branch -> BrandMapper.Instance.toBrandDto(branch))
             .collect(Collectors.toList());
-
         return ResponseEntity.ok(list);
     }
 

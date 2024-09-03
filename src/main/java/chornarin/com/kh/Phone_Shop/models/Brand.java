@@ -1,5 +1,6 @@
 package chornarin.com.kh.Phone_Shop.models;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +21,8 @@ public class Brand {
 
     @Column(nullable = false, unique = true)
     private String name;
+
+
 
     
 

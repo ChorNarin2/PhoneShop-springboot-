@@ -9,7 +9,7 @@ import chornarin.com.kh.Phone_Shop.Dto.Branddto;
 import chornarin.com.kh.Phone_Shop.models.Brand;
 
 @Mapper
-public interface BrandMapper {
+public interface BrandMapper   {
     BrandMapper Instance = Mappers.getMapper(BrandMapper.class);
     // Transforming Brand entity to BrandDto entity
     Brand toBrand(Branddto dto);
