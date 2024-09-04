@@ -1,6 +1,5 @@
 package chornarin.com.kh.Phone_Shop.models;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,19 +10,16 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "brand")
-public class Brand {
-
+@Table(name = "User")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
     private Integer id;
 
     @Column(nullable = false, unique = true)
-    private String name;
+    private String LastName;
 
-
-
-    
+    @Column(nullable = false, unique = true)
+    private String FirstName;
 
 }

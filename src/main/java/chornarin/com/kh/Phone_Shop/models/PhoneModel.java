@@ -12,8 +12,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "model")
-public class Model {
+@Table(name = "PhoneModel")
+public class PhoneModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,27 +26,6 @@ public class Model {
     @JoinColumn(name = "brand_id", referencedColumnName = "id")
     private Brand brand;
 
-    // ger id
-    public Integer getId() {
-        return id;
-    }
-    // set  id
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public Brand getBrand() {
-        return brand;
-    }
-    public void setBrand(Brand brand) {
-        this.brand = brand;
-    }
-
-
+    
 
 }
