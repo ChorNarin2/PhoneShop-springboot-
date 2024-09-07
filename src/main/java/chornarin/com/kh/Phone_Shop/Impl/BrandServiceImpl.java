@@ -2,6 +2,7 @@ package chornarin.com.kh.Phone_Shop.Impl;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -32,8 +33,8 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public Brand GetbyId(Integer id) {
         return brandRepository.findById(id)
-            // .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, String.format("Brand not found for ID: %d", id)));
             .orElseThrow(() -> new ResourceNotFoundException("Brand", id));
+             // .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, String.format("Brand not found for ID: %d", id)));
     }
 
     @Override
