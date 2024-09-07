@@ -8,5 +8,6 @@ public interface ModelService {
 
     PhoneModel save(PhoneModel model);
     List<PhoneModel> getModels();
+    PhoneModel getbybrandId(Integer brandId);
 
 }

@@ -72,5 +72,17 @@ public class BrandController {
         //     .collect(Collectors.toList());
         return ResponseEntity.ok(brand);
     }
+
+
+    @GetMapping("{id}/name")
+    public ResponseEntity<?> getModelbyBrand(@PathVariable("id") Integer brandId) {
+        
+        // List<Branddto> list = brandService.getsBrands(Params).stream()
+        //     .map(branch -> BrandMapper.Instance.toBrandDto(branch))
+        //     .collect(Collectors.toList());
+        return ResponseEntity.ok().build();
+    }
+
+
 }
 
