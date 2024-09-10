@@ -2,7 +2,6 @@ package chornarin.com.kh.Phone_Shop.Impl;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -31,14 +30,14 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public Brand GetbyId(Integer id) {
+    public Brand GetbyId(Long id) {
         return brandRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Brand", id));
              // .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, String.format("Brand not found for ID: %d", id)));
     }
 
     @Override
-    public Brand Update(Integer id, Brand brand){
+    public Brand Update(Long id, Brand brand){
         Brand brand2 = GetbyId(id);
         brand2.setName(brand.getName()); 
         return brandRepository.save(brand2);
@@ -60,7 +59,7 @@ public class BrandServiceImpl implements BrandService {
         }
         if(Params.containsKey("id")){
             String id = Params.get("id");
-            brandFilter.setId(Integer.parseInt(id));
+            brandFilter.setId(Long.parseLong(id));
         }
 
         int pageLimit  = 1;

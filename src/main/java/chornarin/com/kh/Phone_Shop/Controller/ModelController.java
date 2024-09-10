@@ -42,7 +42,7 @@ public class ModelController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<?> GetbybrandId(@PathVariable("id") Integer brandId) {
+    public ResponseEntity<?> GetbybrandId(@PathVariable("id") Long brandId) {
         PhoneModel list  = modelService.getbybrandId(brandId);
         ModelDto modelDto = modelMapper.toModelDto(list);
         return ResponseEntity.ok(modelDto);

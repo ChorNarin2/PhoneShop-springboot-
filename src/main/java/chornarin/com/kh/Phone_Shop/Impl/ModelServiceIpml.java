@@ -26,9 +26,9 @@ public class ModelServiceIpml implements ModelService {
     }
 
     @Override
-    public PhoneModel getbybrandId(Integer brandId) {
-        return modelRepository.findById(brandId)
-        .orElseThrow(() -> new ResourceNotFoundException("id", brandId));
+    public PhoneModel getbybrandId(Long phonemodelId) {
+        return modelRepository.findById(phonemodelId)
+        .orElseThrow(() -> new ResourceNotFoundException("id", phonemodelId));
     }
 
 

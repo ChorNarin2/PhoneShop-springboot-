@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Include the initial database schema -->
+    <include file="db/changeLog/init/001_init_database_schema.xml"/>
+    <include file="db/changeLog/init/002_add_phone_model_table.xml"/>
+
+    <!-- include seeding data into tables -->
+    <include file="db/changeLog/seeders/001_seed_database_schema.xml"/>
+
+  
+
+   
+    
+</databaseChangeLog>

@@ -8,8 +8,8 @@ import chornarin.com.kh.Phone_Shop.models.Brand;
 
 public interface BrandService {
     Brand create(Brand brand);
-    Brand GetbyId(Integer id);
-    Brand Update(Integer id, Brand brand);
+    Brand GetbyId(Long id);
+    Brand Update(Long id, Brand brand);
     List<Brand> getsBrands();
     Page<Brand> getsBrands(Map<String, String> Params);
     

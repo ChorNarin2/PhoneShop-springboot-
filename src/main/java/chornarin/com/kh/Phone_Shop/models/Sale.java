@@ -1,5 +1,7 @@
 package chornarin.com.kh.Phone_Shop.models;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,18 +10,19 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+
 @Data
 @Entity
-@Table(name = "User")
-public class User {
+@Table(name = "sale")
+public class Sale {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name="sale_id", nullable = false, unique = true)
+    private Long id; 
 
-    @Column(nullable = false, unique = true)
-    private String LastName;
+    @Column(name = "sold_date", nullable = false, unique = true)
+    private LocalDateTime solddate;
 
-    @Column(nullable = false, unique = true)
-    private String FirstName;
 
 }
