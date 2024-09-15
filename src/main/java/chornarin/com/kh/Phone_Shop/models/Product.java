@@ -11,8 +11,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import jakarta.validation.constraints.DecimalMin;
 import lombok.Data;
-
 @Data
 @Entity
 @Table(name = "products",
@@ -30,6 +30,7 @@ public class Product {
     @Column(name = "availableUint")
     private Integer availableUint;
 
+
     @ManyToOne
     @JoinColumn(name = "phoneModelId",nullable = false)
     private PhoneModel phoneModel;
@@ -42,6 +43,7 @@ public class Product {
     private String imagePath;
 
     @Column(name = "salePrice")
+    @DecimalMin(value = "0.0000001" , message = "importprice must be greater than 0")
     private BigDecimal salePrice;
 
 

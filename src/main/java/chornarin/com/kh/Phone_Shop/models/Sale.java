@@ -25,4 +25,8 @@ public class Sale {
     private LocalDateTime solddate;
 
 
+    public Sale() {
+        this.solddate = LocalDateTime.now();
+    }
+
 }
