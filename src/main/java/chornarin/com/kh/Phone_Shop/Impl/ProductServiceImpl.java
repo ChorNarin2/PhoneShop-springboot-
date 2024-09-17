@@ -1,17 +1,14 @@
 package chornarin.com.kh.Phone_Shop.Impl;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -59,9 +56,17 @@ public class ProductServiceImpl implements ProductService {
     public void importproduct(ProductImportDto productImportDto) {
         // update aviable products unit
         Product product = getbyid(productImportDto.getProductId());
-        Integer avialableUnit = product.getAvailableUint() + productImportDto.getImportUnit();
-        product.setAvailableUint(avialableUnit);
-        productRepository.save(product);
+        if(product.getAvailableUint() == null){
+            product.setAvailableUint(productImportDto.getImportUnit());
+            productRepository.save(product);
+        }
+        else{
+            Integer avialableUnit = product.getAvailableUint() + productImportDto.getImportUnit();
+            product.setAvailableUint(avialableUnit);
+            productRepository.save(product);
+
+        }
+        
 
         // save product import history 
         ProductImportHistory importHistory = productMapper.toProductImportHistory(productImportDto, product);
@@ -96,7 +101,6 @@ public class ProductServiceImpl implements ProductService {
                         case NUMERIC:
                             System.out.print(cell.getNumericCellValue() + "\t\t");
 
-                            Product product = getByModelIdAndColorId(null, null)
 
                             break;
                         default:
@@ -114,12 +118,13 @@ public class ProductServiceImpl implements ProductService {
       
     }
 
-    @Override
-    public Product getByModelIdAndColorId(Long modelId, Long colorId) {
-        String test = "product with model id = %s and color id =%d was not found";
-        return productRepository.findByModelIdAndColorId( modelId, colorId).orElseThrow(
-            () -> new RuntimeException(HttpStatus.BAD_REQUEST, test.formatted(modelId, colorId));
-        );
-    }
+   
+//     @Override
+//     public Product getByModelIdAndColorId(Long modelId, Long colorId) {
+//     String test = "Product with model ID = %s and color ID = %d was not found";
+//     return productRepository.findByModelIdAndColorId(modelId, colorId)
+//     .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, test.formatted(modelId, colorId)));
+// }
+
     
 }

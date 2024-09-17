@@ -12,7 +12,7 @@ public interface ProductService {
 
     Product save(Product product);
     Product getbyid(Long id);
-    Product getByModelIdAndColorId(Long modelId, Long colorId);
+    // Product getByModelIdAndColorId(Long modelId, Long colorId);
     List<Product> getallproducts();
     void importproduct(ProductImportDto productImportDto);
     void SetPrice(PriceDto priceDto);

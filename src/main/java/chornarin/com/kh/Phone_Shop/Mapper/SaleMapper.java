@@ -5,7 +5,6 @@ import chornarin.com.kh.Phone_Shop.Service.SaleService;
 import chornarin.com.kh.Phone_Shop.models.Sale;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 

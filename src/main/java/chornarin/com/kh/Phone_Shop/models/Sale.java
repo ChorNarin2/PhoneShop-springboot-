@@ -24,6 +24,8 @@ public class Sale {
     @Column(name = "sold_date", nullable = false, unique = true)
     private LocalDateTime solddate;
 
+    private Boolean active;
+
 
     public Sale() {
         this.solddate = LocalDateTime.now();

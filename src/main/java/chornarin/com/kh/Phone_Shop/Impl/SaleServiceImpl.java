@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import chornarin.com.kh.Phone_Shop.Dto.ProductSoldDto;
 import chornarin.com.kh.Phone_Shop.Dto.SaleDto;
 import chornarin.com.kh.Phone_Shop.Exception.ApiException;
+import chornarin.com.kh.Phone_Shop.Exception.ResourceNotFoundException;
 import chornarin.com.kh.Phone_Shop.Repository.ProductRepository;
 import chornarin.com.kh.Phone_Shop.Repository.SaleDatailRepository;
 import chornarin.com.kh.Phone_Shop.Repository.SaleRepository;
@@ -89,6 +90,38 @@ public class SaleServiceImpl implements SaleService {
 
         // });
 
+    }
+
+    @Override
+    public void saleSale(Long saleId) {
+        // updating sale status
+        Sale sale = getbyId(saleId);
+        sale.setActive(false);
+        saleRepository.save(sale);
+
+        //update stock 
+        List<SaleDetail> saleDetails = saleDetailRepository.findBySaleId(saleId);
+
+        List<Long> productIds = saleDetails.stream()
+        .map(sd -> sd.getProductid().getId())
+        .toList();
+
+        List<Product> productList = productRepository.findAllById(productIds);
+        Map<Long, Product> productMap = productList.stream()
+        .collect(Collectors.toMap(Product::getId, Function.identity()));
+
+        saleDetails.forEach(sd -> {
+            Product product = productMap.get(sd.getProductid().getId()); 
+            product.setAvailableUint(product.getAvailableUint() + sd.getUnit());
+            productRepository.save(product);
+        });
+
+    }
+
+    @Override
+    public Sale getbyId(Long saleId) {
+        return saleRepository.findById(saleId).
+        orElseThrow(() -> new ResourceNotFoundException("id", saleId));
     }
 }
 

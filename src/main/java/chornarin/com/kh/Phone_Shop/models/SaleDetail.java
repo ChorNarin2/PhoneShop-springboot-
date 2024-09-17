@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.criteria.Join;
 import lombok.Data;
 
 
@@ -31,13 +32,15 @@ public class SaleDetail {
     @JoinColumn(name = "product_id")
     private Product productid;
 
+    public Product getProductid() {
+        return productid;
+    }
+
     @Column(name = "amount")
     private BigDecimal amount;
 
     @Column(name = "unit")
     private Integer unit;
-
-
 
 
 

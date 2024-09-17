@@ -2,7 +2,9 @@ package chornarin.com.kh.Phone_Shop.Controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,4 +30,14 @@ public class SaleController {
         saleService.processSale(saleDto);
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping({"/{SaleId}/cancel"})
+    public ResponseEntity<?> cancelSale(@PathVariable Long SaleId){
+        saleService.saleSale(SaleId);
+        return ResponseEntity.ok().build();
+
+    }
+
+
+
 }
